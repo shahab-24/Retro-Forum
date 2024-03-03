@@ -1,3 +1,9 @@
+// const Posts = fetch ('https://openapi.programming-hero.com/api/retro-forum/posts');
+
+
+// console.log(allPosts);
+
+
 const loadNews = async () => {
   const res = await fetch (`https://openapi.programming-hero.com/api/retro-forum/posts
   `);
@@ -5,13 +11,12 @@ const loadNews = async () => {
   const newsPortals = data.posts;
   console.log(newsPortals);
   displayNews(newsPortals);
+  // readNewsList();
 }
 
 const displayNews = (newsPortals) =>{
 
   const newsContainer = document.getElementById('news_container');
-
-let markAsRead = 0;
 
   newsPortals.forEach(newsPortal => {
     console.log(newsPortal);
@@ -21,12 +26,17 @@ let markAsRead = 0;
   newsContent.classList = `card card-side bg-base-100 shadow-xl`;
   newsContent.innerHTML =`
   <div class="card card-side bg-base-100 shadow-xl">
-            <figure><img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" alt="Movie"/></figure>
+  <div class="avatar online">
+  <div class="w-[80px] h-[80px] rounded-full">
+    <img src="${newsPortal.image}" class="w-[72px] h-[72px] rounded-xl" />
+  </div>
+</div>
+            <figure><img src="" alt="Movie"/></figure>
             <div class="card-body">
             <div class="flex gap-6">
-            <h5># ${newsPortal.category}</h5>
+            <h5>#${newsPortal.category}</h5>
             <p>Author: ${newsPortal.author.name}</p></div>
-              <h2 class="card-title">${newsPortal.title}</h2>
+              <h2 id="title" class="card-title">${newsPortal.title}</h2>
               <p>${newsPortal.description} <hr></p>
               <div class="flex justify-around gap-4">
               <div class="flex gap-2">
@@ -40,7 +50,7 @@ let markAsRead = 0;
               <p><i class="fa-regular fa-clock"></i>${newsPortal.posted_time}</P></div>
               
               <div class="card-actions justify-end">
-                <button onclick="readNews()" class="btn bg-green-500"><i class="fa-regular fa-envelope"></i></button>
+                <button onclick="readNewsList()" class="btn bg-green-500"><i class="fa-regular fa-envelope"></i></button>
               </div>
               </div>
               
@@ -48,12 +58,88 @@ let markAsRead = 0;
           </div>
   `
     newsContainer.appendChild(newsContent);
+    
   });
-}
+//  readNewsList()
+latestsNews();
+};
 
-const readNews = () =>{
 
-  const appendiv = document.getElementById('title_container');
+
+
+
+
+// // const readNewsList = async () =>{
+// //     const res = await fetch (`https://openapi.programming-hero.com/api/retro-forum/posts
+// //     `);
+// //     const data = await res.json();
+// //     const newsPortals = data.posts;
+// //     console.log(newsPortals);
+// //   // console.log('hello from read');
+
+// //   // const newsTitle = document.getElementById('title');
+// //   newsPortals.forEach(news => {
+// //     console.log(news);
+
+// //     news.addEventListener('click', function (){
+
+
+// //       const titleDiv = document.getElementById('title_container');
+// //   const title = document.createElement('div');
+// //   // const postTitle = document.createElement('li')
+// //   title.textContent = `
+// //   <h2 id="title" class="card-title">${news.title}</h2>
+// //   <p><i class="fa-regular fa-eye"></i>${news.view_count}</P></div>
+  
+// //   `
+  
+ 
+// //   // title.appendChild(postTitle);
+// //   titleDiv.appendChild(title);
+// //     });
+
+
+    
+
+
+// //   })
+  
+
+  
+  
+// }
+
+const latestsNews = async () => {
+  const latest = await fetch (`https://openapi.programming-hero.com/api/retro-forum/latest-posts`);
+  const data = await latest.json();
+  console.log(data);
+
+  const latestPostContainer = document.getElementById('latest_post_container');
+  data.forEach(item =>{
+    const latestContainer = document.createElement('div');
+    latestContainer.innerHTML = `
+    <img src="${item.cover_image}" class="rounded-xl mx-4 mt-10"/>
+    <div class="flex mt-4 gap-4"><i class="fa-solid fa-calendar-days"></i>
+    <p>${item.author.posted_date?}</p></div>
+    
+    <h2 id="title" class="card-title">${item.title}</h2>
+    <p class="mt-4 mb-4">${item.description} <hr></p>
+
+    <div class="flex flex-col">
+    <img src="${item.profile_image}" class="mt-6 w-[50px] h-[50px] rounded-xl"/>
+    <p class="mt-4"> ${item.author.name}</p>
+    <p class="mt-4"> ${item.author.designation}</p>
+    </div>
+    
+
+    
+   
+    
+    
+    
+    `
+    latestPostContainer.appendChild(latestContainer);
+  })
 }
 
 
