@@ -17,20 +17,21 @@
           <h1 class="text-black font-extrabold text-5xl">NOOr</h1>
         </div>
         <div class="flex gap-6">
-          <div class="lg:tooltip" data-tip="hello">
+          <div class="tooltip" data-tip="Home">
             <button class="btn"><i class="fa-solid fa-house"></i></button>
             
           </div>
           
-          <div class="tooltip tooltiptext">
+          <div class="tooltip tooltiptext" data-tip="Edit">
             <i class="fa-solid fa-pen"></i>
           </div>
-          <div class="tooltip">
+          <div class="tooltip tooltiptext" data-tip="Add">
             <i class="fa-solid fa-user-plus"></i>
           </div>
-          <div class="tooltip">
+          <div class="tooltip tooltiptext" data-tip="Flag">
             <i class="fa-regular fa-flag"></i>
           </div>
+          <button class="btn btn-accent">Sign In</button>
 
         </div>
       </div>
@@ -49,14 +50,14 @@
             <div class="max-w-md">
               <h1 class="mb-5 text-5xl font-bold">WelCome To <br> The NOOr Forum</h1>
               <p class="mb-5">Share your favourite opinion and win and get an excellent Mug</p>
-              <input type="text" placeholder="Search here anything" class="input input-bordered w-full max-w-xs"/><button class="btn btn-active btn-primary mx-4">Search</button>
+              <input type="text" placeholder="Search here anything" class="input input-bordered w-full max-w-xs"/><button onclick="handleSearch()" id="search_button" class="btn btn-active btn-primary mx-4">Search</button>
             </div>
             <div class="bg-gray-200 flex flex-col gap-4">
-              <div class=" text-black text-2xl font-semibold text-start rounded-3xl">
-                <h4>Registerd Users-01</h4>
+              <div style="border-radius: 20px; border:2px solid black;" class="flex w-80 justify-between flex-col text-black text-2xl font-semibold text-center rounded-3xl">
+                <h4>Registeerd Users 01</h4>
                 <h4>Forum 03</h4>
-                <h4>Topics-02</h4>
-                <h4>Replies-07</h4>
+                <h4>Topics 02</h4>
+                <h4>Replies 07</h4>
               </div>
             </div>
           </div>
@@ -68,7 +69,7 @@
     <div class="text-center mx-auto my-10 gap-6">
       <h1 class="text-4xl font-bold">Let's Discuss</h1>
       <p>Yes, You can run unit test and view the results <br> directly within the App.
-        The integrated testing features allow for a steamlin.
+        The integrated testing features allow for a steamlind.
       </p>
     </div>
 
@@ -112,7 +113,7 @@
         <p class="mt-4">Yes, you can run until test and results come. <br> The integrated testing features allow for a streamlined.</p>
       </div>
 <!-- post section -->
-<div id="latest_post_container" class="grid grid-cols-3">
+<div id="latest_post_container" class="grid grid-cols-3 space-x-4 mx-4">
 
 
 
@@ -131,6 +132,9 @@
       </nav>  -->
       <div>
         <h1 class="text-black font-extrabold text-5xl">NOOr</h1>
+        <p>Yes, You can run unit test and view the results <br> directly within the App.
+          The integrated testing features allow for a steamlind.
+        </p>
       </div>
       <nav>
         <div class="grid grid-flow-col gap-4">
