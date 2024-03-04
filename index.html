@@ -14,7 +14,7 @@
     <nav>
       <div class="flex justify-between">
         <div>
-          <h1 class="text-black font-extrabold text-5xl">NOOr</h1>
+          <h1 class="font-extrabold text-5xl"><span style="color:blue">NOOr</span></h1>
         </div>
         <div class="flex gap-6">
           <div class="tooltip" data-tip="Home">
@@ -49,7 +49,7 @@
           <div style="border-radius: 40px;" class="hero-overlay bg-opacity-40"></div>
           <div class="hero-content text-center text-neutral-content" >
             <div class="max-w-md">
-              <h1 class="mb-5 text-5xl font-bold">WelCome To <br> The NOOr Forum</h1>
+              <h1 class="mb-5 text-5xl font-bold">WelCome To <br> The <span style="color:blue">NOOr</span> Forum</h1>
               <p class="mb-5">Share your favourite opinion and win and get an excellent Mug</p>
               <input id="input_field" type="text" placeholder="Search here anything" class="input input-bordered w-full max-w-xs"/>
               <button onclick="handleSearch()" id="search_button" class="btn btn-active btn-primary mx-4">Search</button>
@@ -76,9 +76,9 @@
     </div>
 
 <!-- news section -->
-    <section class="container mx-auto w-[100%]">
+    <section class="container mx-auto min-h-screen min-w-full">
       <div class="flex justify-between items-start min-h-screen">
-        <div id="news_container" class="flex flex-col flex-1 gap-4">
+        <div id="news_container" class="flex flex-col flex-1">
 
           
         </div>
@@ -87,7 +87,7 @@
           <div class="flex justify-between items-center mt-4">
            <h2 class="text-black text-3xl font-bold">Title</h2>
             
-          <p class="font-bold text-black text-xl">Mark as read <span id="read_num">0</span></p>
+          <p class="font-bold text-black text-xl">Mark as read <span id="read_num" class="text-green-600">0</span></p>
            
             
           
@@ -112,7 +112,7 @@
       </div>
     </section>
     <div>
-      <span id="loading-spinner" class="loading loading-bars loading-lg hidden"></span
+      <span id="loading-spinner" class="loading loading-bars loading-lg hidden"></span>
     </div>
 
     <!-- latest posts -->

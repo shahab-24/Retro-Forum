@@ -11,22 +11,23 @@ const loadNews = async () => {
   const newsPortals = data.posts;
   
   console.log(newsPortals);
-  displayNews(newsPortals);
   
+  displayNews(newsPortals);
+ 
   // readNewsList();
 }
 
 const displayNews = (newsPortals) =>{
-  const loadingSpinner = document.getElementById('loading-spinner');
-  loadingSpinner.remove('hidden');
+  
   const newsContainer = document.getElementById('news_container');
-
+  
   newsPortals.forEach(newsPortal => {
+    
     // console.log(newsPortal);
 // const active = newsPortal.isActive ? indicator_dot.classList(green) :indicator_dot.classList(red);
 
     const newsContent = document.createElement('div');
-  newsContent.classList = `card card-side bg-base-100 flex flex-1 w-[70%] shadow-xl`;
+  newsContent.classList = `card card-side bg-base-100 flex flex-1 w-[80%] shadow-xl`;
   newsContent.innerHTML =`
   <div class="indicator">
   <span id="indicator_dot" class="indicator-item badge badge-secondary"></span> 
@@ -62,9 +63,11 @@ const displayNews = (newsPortals) =>{
           </div>
   `;
     newsContainer.appendChild(newsContent);
-    
+
     
   });
+  const loadingSpinner = document.getElementById('loading-spinner');
+  loadingSpinner.classlist.remove('hidden');
 //  readNewsList()
 
 };
@@ -101,7 +104,7 @@ const readNewsList = (title, view_count) =>{
   
   // const postTitle = document.createElement('li')
   newsTitle.innerHTML = `
-  <div class="flex justify-between bg-gray-300 w-[400px] h-[100px] mt-6 shadow-xl p-4" style="border-radius: 15px;">
+  <div class="flex justify-between bg-gray-300  w-[450px] h-[100px] mt-6 shadow-xl p-4" style="border-radius: 15px;">
   <h2 class="text-black text-xl font-bold" id="title">${title}</h2>
   <p><i class="fa-regular fa-eye"></i>${view_count}</P></div>
 
