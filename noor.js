@@ -9,29 +9,32 @@ const loadNews = async () => {
   `);
   const data = await res.json();
   const newsPortals = data.posts;
+  
   console.log(newsPortals);
   displayNews(newsPortals);
+  
   // readNewsList();
 }
 
 const displayNews = (newsPortals) =>{
-
+  const loadingSpinner = document.getElementById('loading-spinner');
+  loadingSpinner.remove('hidden');
   const newsContainer = document.getElementById('news_container');
 
   newsPortals.forEach(newsPortal => {
-    console.log(newsPortal);
+    // console.log(newsPortal);
 
 
     const newsContent = document.createElement('div');
-  newsContent.classList = `card card-side bg-base-100 shadow-xl`;
+  newsContent.classList = `card card-side bg-base-100  max-w[80%] shadow-xl`;
   newsContent.innerHTML =`
   <div class="card card-side bg-base-100 shadow-xl">
   <div class="avatar online">
-  <div class="w-[80px] h-[80px] rounded-full">
-    <img src="${newsPortal.image}" class="w-[72px] h-[72px] rounded-xl" />
+  <div class="w-[70px] h-[70px] rounded-full">
+  <img src="${newsPortal.image}" class="w-[10px] h-[10px] rounded-xl" />
   </div>
 </div>
-            
+
             <div class="card-body">
             <div class="flex gap-6">
             <h5>#${newsPortal.category}</h5>
@@ -64,18 +67,31 @@ const displayNews = (newsPortals) =>{
 
 };
 
-// const handleSearch = () => {
-//   const value = document.getElementById('search_button').value;
-//   loadNews(value);
-// }
-
-
-
-
-
-let count = 0;
-const readNewsList = (title, view_count) =>{
+// const handleSearch = async () => {
+//   const postQuery = await fetch(' https://openapi.programming-hero.com/api/retro-forum/posts?category=categoryName');
+//   const queryByCategory = await postQuery.json();
+//   const category = queryByCategory.id.author.category;
+//   console.log(category);
   
+  
+  
+  
+//   const value = document.getElementById('input_field').value.trim();
+// console.log(value);
+//         loadNews(value);}
+ 
+ 
+
+
+
+
+
+
+let sum = 0;
+const readNewsList = (title, view_count) =>{
+  const readSum = document.getElementById('read_num');
+  sum++;
+  readSum.innerText = sum;
 
 
       const titleDiv = document.getElementById('title_container');
@@ -83,8 +99,9 @@ const readNewsList = (title, view_count) =>{
   
   // const postTitle = document.createElement('li')
   newsTitle.innerHTML = `
-  <h2 id="title">${title}</h2>
-  <p id="view">${view_count}</P>
+  <div class="flex justify-between">
+  <h2 class="text-black text-xl font-bold" id="title">${title}</h2>
+  <p id="view">${view_count}</P></div>
 
   `;
  
