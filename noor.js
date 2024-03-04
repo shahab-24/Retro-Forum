@@ -1,7 +1,3 @@
-// const Posts = fetch ('https://openapi.programming-hero.com/api/retro-forum/posts');
-
-
-// console.log(allPosts);
 
 
 const loadNews = async () => {
@@ -9,12 +5,14 @@ const loadNews = async () => {
   `);
   const data = await res.json();
   const newsPortals = data.posts;
+  const searchData = newsPortals.category;
+
   
-  console.log(newsPortals);
   
   displayNews(newsPortals);
+  
  
-  // readNewsList();
+
 }
 
 const displayNews = (newsPortals) =>{
@@ -30,13 +28,14 @@ const displayNews = (newsPortals) =>{
   newsContent.classList = `card card-side bg-base-100 flex flex-1 w-[80%] shadow-xl`;
   newsContent.innerHTML =`
   <div class="indicator">
-  <span id="indicator_dot" class="indicator-item badge badge-secondary"></span> 
+  <span id="indicator_dot" class="indicator-item badge badge-secondary"></span>
+  
+
+  
+  
   <div class="grid w-32 h-32 bg-base-300 place-items-center"><img class="rounded-3xl" src="${newsPortal.image}"></div>
 </div>
  
-
-
-
             <div class="card-body">
             <div class="flex gap-6">
             <h5>#${newsPortal.category}</h5>
@@ -61,33 +60,42 @@ const displayNews = (newsPortals) =>{
               
             </div>
           </div>
+
   `;
+  // const span = ${isActive} ? indicator_dot 'bg-green-500' : indicator_dot.classlist.add('bg-red-500');
+  
     newsContainer.appendChild(newsContent);
 
-    
   });
-  const loadingSpinner = document.getElementById('loading-spinner');
-  loadingSpinner.classlist.remove('hidden');
-//  readNewsList()
 
+  
+  
+  // if(${isActive} === true){
+  //   document.getElementById('indicator_dot').classList.add("bg-green-500")
+  // }
+  // else{document.getElementById('indicator_dot').classList.add("bg-red-500")
+
+  // }
 };
 
-// const handleSearch = async () => {
-//   const postQuery = await fetch(' https://openapi.programming-hero.com/api/retro-forum/posts?category=categoryName');
-//   const queryByCategory = await postQuery.json();
-//   const category = queryByCategory.id.author.category;
-//   console.log(category);
+
+const handleSearch = async () => {
+  const searchCategory = document.getElementById('input_field');
+  const searchCat = searchCategory.value;
+  const res = await fetch(`https://openapi.programming-hero.com/api/retro-forum/posts?category=${searchCat}`);
+  // const queryByCategory = await res.json();
+  // const data = queryByCategory.posts;
+  // // const searchNews = queryByCategory;
+  // console.log(data);
+
   
-  
-  
-  
-//   const value = document.getElementById('input_field').value.trim();
-// console.log(value);
-//         loadNews(value);}
- 
- 
+// console.log(postQuery);
+  console.log(searchCat);
+  loadNews(searchCat);
 
 
+};
+  
 
 
 
@@ -102,7 +110,7 @@ const readNewsList = (title, view_count) =>{
       const titleDiv = document.getElementById('title_container');
   const newsTitle = document.createElement('div');
   
-  // const postTitle = document.createElement('li')
+  
   newsTitle.innerHTML = `
   <div class="flex justify-between bg-gray-300  w-[450px] h-[100px] mt-6 shadow-xl p-4" style="border-radius: 15px;">
   <h2 class="text-black text-xl font-bold" id="title">${title}</h2>
@@ -110,12 +118,10 @@ const readNewsList = (title, view_count) =>{
 
   `;
  
-  // title.appendChild(postTitle);
+  
   titleDiv.appendChild(newsTitle);
     };
 
-  
-  
   
   
 
