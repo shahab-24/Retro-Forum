@@ -23,17 +23,18 @@ const displayNews = (newsPortals) =>{
 
   newsPortals.forEach(newsPortal => {
     // console.log(newsPortal);
-
+// const active = newsPortal.isActive ? indicator_dot.classList(green) :indicator_dot.classList(red);
 
     const newsContent = document.createElement('div');
-  newsContent.classList = `card card-side bg-base-100  max-w[80%] shadow-xl`;
+  newsContent.classList = `card card-side bg-base-100 flex flex-1 w-[70%] shadow-xl`;
   newsContent.innerHTML =`
-  <div class="card card-side bg-base-100 shadow-xl">
-  <div class="avatar online">
-  <div class="w-[70px] h-[70px] rounded-full">
-  <img src="${newsPortal.image}" class="w-[10px] h-[10px] rounded-xl" />
-  </div>
+  <div class="indicator">
+  <span id="indicator_dot" class="indicator-item badge badge-secondary"></span> 
+  <div class="grid w-32 h-32 bg-base-300 place-items-center"><img class="rounded-3xl" src="${newsPortal.image}"></div>
 </div>
+ 
+
+
 
             <div class="card-body">
             <div class="flex gap-6">
@@ -47,7 +48,7 @@ const displayNews = (newsPortals) =>{
               </div>
 
               <div class="flex gap-2">
-              <p id="view"><i class="fa-regular fa-eye"></i>${newsPortal.view_count}</P></div>
+              <p><i class="fa-regular fa-eye"></i>${newsPortal.view_count}</P></div>
             
               <div class="flex gap-2">
               <p><i class="fa-regular fa-clock"></i>${newsPortal.posted_time}</P></div>
@@ -61,6 +62,7 @@ const displayNews = (newsPortals) =>{
           </div>
   `;
     newsContainer.appendChild(newsContent);
+    
     
   });
 //  readNewsList()
@@ -99,9 +101,9 @@ const readNewsList = (title, view_count) =>{
   
   // const postTitle = document.createElement('li')
   newsTitle.innerHTML = `
-  <div class="flex justify-between">
+  <div class="flex justify-between bg-gray-300 w-[400px] h-[100px] mt-6 shadow-xl p-4" style="border-radius: 15px;">
   <h2 class="text-black text-xl font-bold" id="title">${title}</h2>
-  <p id="view">${view_count}</P></div>
+  <p><i class="fa-regular fa-eye"></i>${view_count}</P></div>
 
   `;
  
