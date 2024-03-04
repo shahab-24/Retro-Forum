@@ -50,13 +50,13 @@ const displayNews = (newsPortals) =>{
               <p><i class="fa-regular fa-clock"></i>${newsPortal.posted_time}</P></div>
               
               <div class="card-actions justify-end">
-                <button onclick="readNewsList()" class="btn bg-green-500"><i class="fa-regular fa-envelope"></i></button>
+                <button onclick="readNewsList('${newsPortal.title}',${newsPortal.view_count})" class="btn bg-green-500"><i class="fa-regular fa-envelope"></i></button>
               </div>
               </div>
               
             </div>
           </div>
-  `
+  `;
     newsContainer.appendChild(newsContent);
     
   });
@@ -73,41 +73,30 @@ const displayNews = (newsPortals) =>{
 
 
 
-
-const readNewsList = async (id, value) =>{
-    const res = await fetch (`https://openapi.programming-hero.com/api/retro-forum/posts
-    `);
-    const data = await res.json();
-    const newsPortals = data.posts;
-    console.log(newsPortals);
-  // console.log('hello from read');
-
-  const newsTitle = document.getElementById('title');
-  newsPortals.forEach(news => {
-    console.log(news);
-
-    // news.addEventListener('click', function (){
+let count = 0;
+const readNewsList = (title, view_count) =>{
+  
 
 
       const titleDiv = document.getElementById('title_container');
-  const title = document.createElement('div');
+  const newsTitle = document.createElement('div');
   
   // const postTitle = document.createElement('li')
-  title.innerHTML = `
-  <h2 id="title">${news.title}</h2>
-  <p id="view">${news.view_count}</P>
+  newsTitle.innerHTML = `
+  <h2 id="title">${title}</h2>
+  <p id="view">${view_count}</P>
 
   `;
  
   // title.appendChild(postTitle);
-  titleDiv.appendChild(title);
-    });
+  titleDiv.appendChild(newsTitle);
+    };
 
-  };
   
   
   
   
+
 
 
 const latestsNews = async () => {
